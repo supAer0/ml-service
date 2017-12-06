@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Products</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/products.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body data-bind="siteViewModel">
+
+<!------------MODAL WINDOW------------->
+<div class="modal fade" id="createSite" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Добавление нового сайта</h4>
+            </div>
+            <div class="modal-body">
+                <div class="content-inner">
+                    <div class="form-wrapper">
+                        <form data-bind="submit: addSite">
+                            <div class="form-group">
+                                <label>Название</label>
+                                <input class="form-control" type="text" placeholder="Название" name="title" data-bind="value: title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>URL</label>
+                                <input class="form-control" type="text" placeholder="URL" name="url" data-bind="value: url" required>
+                            </div>
+                            <div class="clearfix">
+                                <button type="submit" class="btn btn-primary pull-right" id="btn-add">Добавить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--/modal window-->
+
+<div class="container-fluid display-table">
+    <div class="row display-table-row">
+        <!-- side menu -->
+        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top" id="side-menu">
+            <h1 class="hidden-sm hidden-xs">Navigation</h1>
+            <ul>
+                <li class="link">
+                    <a href="index_old.html">
+                        <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                        <span class="hidden-xs hidden-sm">Dashbroad</span>
+                    </a>
+                </li>
+                <li class="link active">
+                    <a href="#collapse-products" data-toggle="collapse" aria-controls="collapse-products">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        <span class="hidden-xs hidden-sm">Products</span>
+                        <span class="label label-success pull-right hidden-xs hidden-sm">0</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-products">
+                        <li><a href="new-products.html">Create New</a></li>
+                        <li><a href="products.html">View Products</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <a href="#collapse-groups" data-toggle="collapse" aria-controls="collapse-groups">
+                        <span class="glyphicon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                        <span class="hidden-xs hidden-sm">Groups</span>
+                        <span class="label label-success pull-right hidden-xs hidden-sm">0</span>
+                    </a>
+                    <ul class="collapse collapseable" id="collapse-groups">
+                        <li><a href="#">Create New</a></li>
+                        <li><a href="#">View Groups</a></li>
+                    </ul>
+                </li>
+                <li class="link">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span class="hidden-xs hidden-sm">Users</span>
+                    </a>
+                </li>
+                <li class="link settings-btn">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span class="hidden-xs hidden-sm">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- main ccontent area -->
+        <div class="col-md-10 col-sm-11 display-table-cell valign-top">
+            <div class="row">
+                <header id="nav-header" class="clearfix">
+                    <div class="col-md-5">
+                        <nav class="navbar-default pull-left">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </nav>
+                        <input type="text" class="hidden-sm hidden-xs" id="header-search-field" placeholder="Search for something...">
+                    </div>
+                    <div class="col-md-7">
+                        <ul class="pull-right">
+                            <li id="welcom" class="hidden-xs">Welcom to your administration area</li>
+                            <li class="fixed-width">
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-bell" area-hidden="true"></span>
+                                    <span class="label label-warning">3</span>
+                                </a>
+                            </li>
+                            <li class="fixed-width">
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-envelope" area-hidden="true"></span>
+                                    <span class="label label-message">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="logout">
+                                    <span class="glyphicon glyphicon-log-out" area-hidden="true"></span> log out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </header>
+            </div>
+
+            <div class="content">
+                <header class="clearfix">
+                    <h2 class="page_title pull-left">All products</h2>
+                    <button type="button" class="btn btn-xs btn-primary pull-right">Create new product</button>
+                </header>
+                <div class="content-inner">
+                    <div class="row search-row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control search-field" id="search" placeholder="Search">
+                                <span class="input-group-btn">
+												<button type="button" class="btn btn-primary go">Go!</button>
+											</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row product-row">
+                        <div class="col-xs-2 col-sm-1 col-md-1 status-padding">
+                            <span class="label label-success label-sm">Active</span>
+                        </div>
+                        <div class="col-xs-10 xol-sm-6 col-md-8 product-title">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <small>Created 27th April 2017</small>
+                        </div>
+                        <div class="col-xs-10 col-sm-5 col-md-3 col-xs-offset-2 col-sm-offset-0 col-md-offset-0 col-lg-offset-0">
+                            <div class="product-actions">
+                                <a class="btn btn-xs btn-default" href="#" role="button">
+                                    <span class="glyphicon glyphicon-folder-open" aria-hidden="true">&nbsp;View</span>
+                                </a>
+
+                                <a class="btn btn-xs btn-default" href="#" role="button">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;Edit</span>
+                                </a>
+
+                                <a class="btn btn-xs btn-default" href="#" role="button">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;Delete</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav>
+                                <ul class="pagination">
+                                    <li><a href="#">&laquo;</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&raquo;</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <footer id="admin-footer" class="clearfix">
+                    <div class="pull-left"><b>Copyright</b> &copy; 2017</div>
+                    <div class="pull-right">admin system <b>WEBATOM</b></div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
