@@ -1,4 +1,4 @@
-var HOME_URL = "http://ml.clever-tech.xyz/";
+var HOME_URL = "http://ml.clever-tech.xyz/"; //site-url
 var OPENAPI_PATH = HOME_URL + "openapi/getContent?token=";
 // The site model
 function Site(id, title,url, token) {
@@ -8,7 +8,7 @@ function Site(id, title,url, token) {
     self.url=ko.observable(url);
     self.token=token;
 }
-// The url view model
+// The site view model
 function SitesViewModel() {
     var self = this;
     self.sites = ko.observableArray([]);
@@ -61,11 +61,9 @@ function SitesViewModel() {
                 type: "get",
                 contentType: 'application/json; charset=utf-8',
                 success: function (allData) {
-                    //console.log(allData);
                     window.location.href = HOME_URL;
                 },
                 error: function (allData) {
-                    //alert(allData.responseText);
                     alert("Упс, что-то пошло не так, попбуйти еще раз");
                     console.log('error! Не могу отправить json запрос');
                     console.log(allData);
@@ -81,14 +79,11 @@ function SitesViewModel() {
         site.title(self.title());
         site.url(self.url());
         var jsonData = ko.toJSON(site);
-        //console.log(jsonData);
-        // make POST request
         $.ajax("/api/createSite", {
             data: jsonData,
             type: "post",
             contentType: 'application/json; charset=utf-8',
             success: function (allData) {
-                //alert("Ваш url добавлен");
                 console.log(allData);
                 self.sites.push(new Site(allData.id,allData.title,allData.url));
                 self.title("");
@@ -113,8 +108,6 @@ function SitesViewModel() {
         thisSite.url(self.siteUrl());
         thisSite.title(self.siteTitle());
         var jsonData = ko.toJSON(thisSite);
-        //console.log(jsonData);
-        // make POST request
         $.ajax("/api/updateSite", {
             data: jsonData,
             type: "post",
@@ -140,9 +133,3 @@ function SitesViewModel() {
 
     self.reload();
 }
-
-
-// Activates knockout.js
-//создаем экземпляр ViewModel
-// var sitesViewModel = new SitesViewModel();
-// ko.applyBindings(sitesViewModel);

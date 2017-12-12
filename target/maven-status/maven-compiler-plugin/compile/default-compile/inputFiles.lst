@@ -1,0 +1,17 @@
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/model/ElementValue.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/repository/SiteRepository.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/model/Nisha.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/model/El.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/controller/RestController/ApiController.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/repository/ElementValueRepository.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/repository/InstanceSiteRepository.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/repository/NishaRepository.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/model/Site.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/model/Element.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/controller/RestController/OpenApiController.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/service/RandomString.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/controller/IndexController.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/repository/ElementRepository.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/model/InstanceSite.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/MultilandingApplication.java
+/home/alex/Study/Projects/Spring/ml-system-for-production/src/main/java/alex/com/system/multilanding/service/SecurityConfig.java

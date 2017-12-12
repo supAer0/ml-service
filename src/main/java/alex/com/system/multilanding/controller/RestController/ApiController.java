@@ -169,10 +169,10 @@ public class ApiController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/deleteInstance")
-    public ResponseEntity removeInstance(@RequestBody InstanceSite instanceSite) {
+    @GetMapping("/deleteInstance")
+    public ResponseEntity removeInstance(@RequestParam("id") Long id) {
         try {
-            instanceSiteRepository.delete(instanceSite);
+            instanceSiteRepository.delete(id);
         }
         catch (Exception ignored){
             return ResponseEntity.notFound().build();
@@ -247,21 +247,40 @@ public class ApiController {
         return new ResponseEntity<>(list,HttpStatus.OK);
 
     }
-
+//TODO FIXED
     @PostMapping("/saveElementsWithValue")
-    public ResponseEntity<List<ElementValue>> saveElementsWithValue(@RequestBody List<El> els, @RequestParam("id_instance") Long ident){
-        InstanceSite is = instanceSiteRepository.findOne(ident);
-        for (El e:els) {
-            Element element = elementRepository.findOne(e.getId());
-            ElementValue ev = new ElementValue();
-            ev.setInstanceSite(is);
-            ev.setElement(element);
-            ev.setValue(e.getValue());
-            elementValueRepository.save(ev);
+    public ResponseEntity saveElementsWithValue(@RequestBody List<El> els, @RequestParam("id_instance") Long ident){
+        try {
+            InstanceSite is = instanceSiteRepository.findOne(ident);
+            for (El el:els) {
+                boolean flag = (el.getValue().equals("") || el.getValue()==null);
+                Element element = elementRepository.findOne(el.getId());
+                ElementValue elementValue = elementValueRepository.findByElement(element);
+                if (elementValue==null){
+                    if (flag)
+                        continue;
+                    else
+                        elementValue = new ElementValue(is,element,el.getValue());
+
+                }
+                else {
+                   if (flag){
+                       elementValueRepository.delete(elementValue);
+                       continue;
+                   } else {
+                     //  elementValue.setElement(element);
+                       // elementValue.setInstanceSite(is);
+                       elementValue.setValue(el.getValue());
+                   }
+                }
+                elementValueRepository.save(elementValue);
+
         }
-
-
-        return new ResponseEntity<>(elementValueRepository.findAll(), HttpStatus.OK);
+            return ResponseEntity.ok().build();
+        }
+        catch (Exception e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
 //    @GetMapping("getToken")

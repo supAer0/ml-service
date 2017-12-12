@@ -106,23 +106,22 @@ function InstanceViewModel() {
     };
 
     self.removeInstance = function (instance) {
-        var jsonData = ko.toJSON(instance);
-        console.log(jsonData);
-        $.ajax("/api/deleteInstance", {
-            data: jsonData,
-            type: "post",
-            contentType: 'application/json; charset=utf-8',
-            success: function (allData) {
-                //console.log(allData);
-                self.instances.remove(instance);
-            },
-            error: function (allData) {
-                //alert(allData.responseText);
-                alert("Упс, что-то пошло не так, попбуйти еще раз");
-                console.log('error! Не могу отправить json запрос');
-                console.log(allData);
-            }
-        });
+        // var jsonData = ko.toJSON(instance);
+        // console.log(jsonData);
+        if (confirm("Вы подтверждаете удаление?")) {
+            $.ajax("/api/deleteInstance?id=" + instance.id, {
+                type: "get",
+                contentType: 'application/json; charset=utf-8',
+                success: function (allData) {
+                    self.instances.remove(instance);
+                },
+                error: function (allData) {
+                    alert("Упс, что-то пошло не так, попбуйти еще раз");
+                    console.log('error! Не могу отправить json запрос');
+                    console.log(allData);
+                }
+            });
+        }
 
 
     };

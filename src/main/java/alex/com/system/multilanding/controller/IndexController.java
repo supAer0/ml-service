@@ -37,7 +37,7 @@ public class IndexController {
             return "site";
         }
         catch (Exception e){
-            return "notFound";
+            return "index";
         }
     }
     @GetMapping("/sites/{id_site}/instances/{id_instance}")

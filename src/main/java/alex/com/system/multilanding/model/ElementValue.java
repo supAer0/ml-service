@@ -30,7 +30,7 @@ public class ElementValue {
             Element element,
             String value) {
         this.instanceSite = instanceSite;
-//        this.element = element;
+        this.element = element;
         this.value = value;
     }
     public ElementValue() {

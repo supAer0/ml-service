@@ -15,7 +15,7 @@ public class Element {
     private Long id;
     @Column(nullable=false)
     private String name;
-    @Column(nullable=false, name = "keyName")
+    @Column(nullable=false, name = "keyName", unique = true)
     private String key;
     @ManyToOne
     @JoinColumn (name="site_id")

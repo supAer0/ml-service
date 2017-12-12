@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multilanding</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top: 50px" data-bind="nishaViewModel">
+    <div class="col-md-6">
+    <ul data-bind="foreach: niches">
+        <li data-bind="text: title"></li>
+    </ul>
+    </div>
+    <div class="col-md-6">
+        <form data-bind="submit: addNisha">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="title" name="title" data-bind="value: title" placeholder="title" required >
+            </div>
+            <div class="clearfix"></div>
+            <button type="submit" class="btn btn-primary" id="btn-add">Save / Add</button>
+        </form>
+    </div>
+</div>
+
+<!--Knockout-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

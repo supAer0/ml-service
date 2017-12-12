@@ -5,7 +5,7 @@
 
 	<groupId>alex.com.system</groupId>
 	<artifactId>multilanding</artifactId>
-	<version>0.0.2-REALISE</version>
+	<version>0.0.3-REALISE</version>
 	<packaging>jar</packaging>
 
 	<name>multilanding</name>

@@ -58,6 +58,19 @@ function ElementViewModel() {
             el.key = h[headers[2]];
             data.push(el);
         });
+        // check for dist key
+        for(var i = 0; i<data.length;i++){
+            for (var j = 1; j <data.length;j++){
+                if(i===j)
+                    break;
+                if (data[i].key == data[j].key){
+                    alert("Возможно указан повторябщийся ключ  строки["+i+", " + j+"]");
+                    return;
+                }
+            }
+        }
+
+
         console.log("data = " + data);
         var jsonData = ko.toJSON(data);
         console.log("JSON= " + jsonData);

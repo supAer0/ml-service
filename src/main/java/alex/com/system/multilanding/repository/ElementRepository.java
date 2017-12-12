@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ElementRepository extends JpaRepository<Element, Long> {
+    Element findByKey(String key);
 }
